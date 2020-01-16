@@ -8,13 +8,27 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, Storyboarded {
+    weak var coordinator: MainCoordinator?
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+           super.viewDidLoad()
+        print(self.coordinator)
+           // Do any additional setup after loading the view.
+        
     }
-
-
+    
+    func setCoordinator(coordinator: MainCoordinator){
+        self.coordinator = coordinator
+    }
+    
+    @IBAction func buyTapped(_ sender: Any) {
+        self.coordinator?.buySubscription()
+    }
+    
+    @IBAction func createTapped(_ sender: Any) {
+        self.coordinator?.create()
+    }
+    
 }
 
